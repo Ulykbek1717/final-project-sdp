@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>E-Commerce Store</h1>
+        </header>
+
+        <div class="main-content">
+            <!-- Products Section -->
+            <section class="products-section">
+                <h2>Products</h2>
+                <div id="products-grid" class="products-grid"></div>
+            </section>
+
+            <!-- Cart Section -->
+            <section class="cart-section">
+                <h2>Shopping Cart</h2>
+                <div id="cart-items" class="cart-items"></div>
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Discount:</span>
+                        <span id="discount">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="total">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Discount Section -->
+                <div class="discount-section">
+                    <h3>Apply Discount</h3>
+                    <div class="discount-controls">
+                        <select id="discount-type">
+                            <option value="percentage">Percentage Off</option>
+                            <option value="fixed">Fixed Amount Off</option>
+                            <option value="bulk">Bulk Discount</option>
+                        </select>
+                        <input type="number" id="discount-value" placeholder="Value" step="0.01" min="0">
+                        <input type="number" id="discount-threshold" placeholder="Threshold (for bulk)" step="1" min="0" style="display: none;">
+                        <button onclick="applyDiscount()">Apply</button>
+                    </div>
+                </div>
+
+                <!-- Checkout Section -->
+                <div class="checkout-section">
+                    <h3>Checkout & Email Confirmation</h3>
+                    <div class="checkout-controls">
+                        <input type="email" id="customer-email" placeholder="Your Email Address" required>
+                        <select id="checkout-payment-method">
+                            <option value="creditcard">Credit Card</option>
+                            <option value="paypal">PayPal</option>
+                        </select>
+                        <input type="text" id="payment-details" placeholder="Payment Details" value="payment_details">
+                        <button onclick="checkout()" class="checkout-btn">Complete Purchase</button>
+                    </div>
+                    <div id="checkout-result" class="checkout-result"></div>
+                </div>
+
+                <!-- Admin Controls -->
+                <div class="admin-section">
+                    <h3>Admin: Update Products (Observer Pattern)</h3>
+                    <div class="admin-controls">
+                        <select id="update-product">
+                            <option value="">Select Product</option>
+                        </select>
+                        <select id="update-type">
+                            <option value="price">Update Price</option>
+                            <option value="stock">Update Stock</option>
+                        </select>
+                        <input type="number" id="update-value" placeholder="New Value" step="0.01" min="0">
+                        <button onclick="updateProduct()">Update</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
